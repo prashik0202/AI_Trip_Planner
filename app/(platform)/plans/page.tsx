@@ -74,9 +74,7 @@ const page = () => {
               key={index}
             >
               <CardHeader>
-                <CardTitle>
-                  <h1 className="text-3xl ">✨ {trip.location}</h1>
-                </CardTitle>
+                <CardTitle className="text-3xl">✨ {trip.location}</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-1">
                 <h1 className="text-md text-neutral-700">

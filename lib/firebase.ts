@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCWMx1FXK_xEeMz5DCCObH2K733IRClW0s",
-  authDomain: "travelai-29148.firebaseapp.com",
-  projectId: "travelai-29148",
-  storageBucket: "travelai-29148.appspot.com",
-  messagingSenderId: "293968433785",
-  appId: "1:293968433785:web:2d63f7869429ed4e4afaa8",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
 // Initialize Firebase
