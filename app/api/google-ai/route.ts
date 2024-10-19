@@ -1,4 +1,4 @@
-export const maxDuration = 25; // This function can run for a maximum of 25 seconds
+export const maxDuration = 60; // This function can run for a maximum of 25 seconds
 import { currentUser } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { collection, addDoc } from "firebase/firestore";
