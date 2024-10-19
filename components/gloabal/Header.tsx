@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function HomePageHeader() {
   return (

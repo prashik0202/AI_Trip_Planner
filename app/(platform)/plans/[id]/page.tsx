@@ -1,25 +1,17 @@
-"use client";
 import database from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import React from "react";
-import { useParams } from "next/navigation";
+import { redirect } from "next/navigation";
 import Link from "next/link";
-import {
-  Clock,
-  ExternalLink,
-  Hotel,
-  MapPinCheckIcon,
-  Star,
-} from "lucide-react";
+import { Clock, ExternalLink, Hotel, MapPinCheckIcon } from "lucide-react";
 import { HotelDetails, itineraryDetails, TripDetails } from "@/lib/types";
+import { currentUser } from "@clerk/nextjs/server";
 
 const StarRating = ({ ratingString }: { ratingString: string }) => {
   // Extract the number from the string (e.g., "4" from "4-star")
   const rating = parseInt(ratingString.split("-")[0]);
-
   // Create an array with 'rating' number of stars
   const stars = Array(rating).fill("⭐");
-
   return (
     <>
       {stars.map((star, index) => (
@@ -29,35 +21,29 @@ const StarRating = ({ ratingString }: { ratingString: string }) => {
   );
 };
 
-const TripDetailsPage = () => {
-  const params = useParams();
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [tripDetails, setTripDetails] = React.useState<TripDetails>();
-  const [hotelDetails, setHotelDetails] = React.useState<HotelDetails[]>([]);
-  const [itinerary, setItinerary] = React.useState<itineraryDetails[]>([]);
+const TripDetailsPage = async ({ params }: { params: { id: string } }) => {
+  const user = await currentUser();
+  if (!user) {
+    redirect("/sign-in");
+  }
 
-  React.useEffect(() => {
-    const fetchItems = async () => {
-      setLoading(true);
-      const docRef = doc(database, "plans", params.id.toString());
-      const docSnap = await getDoc(docRef);
+  let tripDetails: TripDetails | null = null;
+  let hotelDetails: HotelDetails[] = [];
+  let itinerary: itineraryDetails[] = [];
 
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        console.log(data);
-        setTripDetails(data.trip.tripDetails);
-        setHotelDetails(data.trip.hotels);
-        setItinerary(data.trip.itinerary);
-        console.log(data.trip.itinerary);
-        setLoading(false);
-      } else {
-        console.log("No document found");
-        setLoading(false);
-      }
-    };
+  const docRef = doc(database, "plans", params.id.toString());
+  const docSnap = await getDoc(docRef);
 
-    fetchItems();
-  }, []);
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    console.log(data);
+    tripDetails = data.trip.tripDetails;
+    hotelDetails = data.trip.hotels;
+    itinerary = data.trip.itinerary;
+    console.log(data.trip.itinerary);
+  } else {
+    console.log("No document found");
+  }
 
   return (
     <div className="p-10 md:p-20 lg:p-32 flex flex-col gap-10 justify-start">

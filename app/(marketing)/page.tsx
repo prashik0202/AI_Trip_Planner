@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import React from "react";
-import { AnimatedBeamDemo } from "./_component/animatedBeam";
 import Link from "next/link";
 
 const page = () => {

@@ -18,7 +18,7 @@ const model = genAI.getGenerativeModel({
   model: "gemini-1.5-pro-002",
 });
 
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
   const chatSession = model.startChat({
     generationConfig,
     // safetySettings: Adjust safety settings
