@@ -7,9 +7,15 @@ import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
 import PlanCard from "./_compoents/PlanCard";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 const PlansPage = async () => {
   const user = await currentUser();
+
+  if (!user) {
+    redirect("/sign-in");
+  }
+
   let plans = [];
   if (user) {
     const collection_ref = collection(database, "plans");
