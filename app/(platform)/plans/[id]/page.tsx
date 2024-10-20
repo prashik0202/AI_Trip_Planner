@@ -46,7 +46,7 @@ const TripDetailsPage = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="p-10 md:p-20 lg:p-32 flex flex-col gap-10 justify-start">
+    <div className="p-4 md:p-20 lg:p-32 flex flex-col gap-10 justify-start">
       {/* Trip Details */}
       <div className="flex flex-col gap-3">
         <h1 className="text-2xl md:text-3xl font-bold">

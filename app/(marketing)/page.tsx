@@ -5,11 +5,11 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <div className="p-5 md:p-10 lg:p-32 flex flex-col justify-center items-center gap-5">
-      <h1 className="text-5xl md:text-6xl lg:text-8xl text-purple-400">
+    <div className="p-2 md:p-10 lg:p-32 flex flex-col justify-center items-center gap-5">
+      <h1 className="text-5xl md:text-6xl lg:text-8xl text-purple-400 text-center">
         TravelAI
       </h1>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl text-center">
         Welcome to Your AI Travel Planner
       </h2>
       <p className="text-md text-muted-foreground text-center">

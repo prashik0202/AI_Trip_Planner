@@ -26,7 +26,7 @@ const PlansPage = async () => {
   console.log(item);
 
   return (
-    <div className="p-10 md:p-32 h-full">
+    <div className="p-4 md:p-32 h-full">
       <div className="flex justify-start gap-10">
         <h1 className="text-4xl">Your AI Generated Trips</h1>
         <Button asChild>
